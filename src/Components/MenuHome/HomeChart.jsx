@@ -44,33 +44,11 @@ const HomeChart = ({ dataRuas }) => {
       total: 5,
     },
   ];
-  // const [dataRuas, setDataRuas] = useState([]);
-
-  // const getDataRuasAPI = () => {
-  //   getDataRuas()
-  //     .then((res) => {
-  //       setDataRuas(res);
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  console.log(
-    "data ruas",
-    dataRuas
-      .filter((e) => {
-        return e.unit;
-      })
-      .map(({ unit }) => unit)
-  );
 
   const dataToChart = {
     labels: datachart.map((e) => e.unit),
     datasets: [
       {
-        // pointStyle: "cross",
         label: "Total",
         backgroundColor: colorChart,
         borderColor: "black",
@@ -83,9 +61,6 @@ const HomeChart = ({ dataRuas }) => {
     ],
   };
 
-  // useEffect(() => {
-  //   getDataRuasAPI();
-  // }, []);
   return (
     <div className="w-full flex flex-row gap-3 mb-4">
       <div className="w-2/6 h-72 rounded-lg p-2 bg-slate-400">
@@ -95,42 +70,12 @@ const HomeChart = ({ dataRuas }) => {
             plugins: {
               legend: {
                 display: true,
-                position: "bottom"
+                position: "bottom",
               },
               labels: {
                 fontColor: "red",
               },
             },
-            // scales: {
-            //   y: {
-            //     grid: {
-            //       color: "white",
-            //       drawBorder: true,
-            //       borderColor: "white",
-            //       drawOnChartArea: false,
-            //     },
-            //     ticks: {
-            //       color: "white",
-            //       fontSize: 33,
-            //       stepSize: 1,
-            //       beginAtZero: true,
-            //     },
-            //   },
-            //   x: {
-            //     grid: {
-            //       color: "white",
-            //       drawBorder: true,
-            //       borderColor: "white",
-            //       drawOnChartArea: false,
-            //     },
-            //     ticks: {
-            //       color: "white",
-            //       borderColor: "white",
-            //       stepSize: 1,
-            //       // beginAtZero: true,
-            //     },
-            //   },
-            // },
             maintainAspectRatio: false,
           }}
         />
