@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import ListMasterRuas from "../Components/MenuMasterRuas/ListMasterRuas";
 import SideMenu from "../Components/SideMenu";
-import { HomeChart, HomeImage, HomeList } from "../Components/MenuHome";
-import { getDataRuas } from "../Utils/ApiData";
-const Home = () => {
+import {
+  getDataRuas,
+  postDataRuas,
+  putDataRuas,
+  deleteDataRuas,
+} from "../Utils/ApiData";
+
+const MasterRuas = () => {
   const [dataRuas, setDataRuas] = useState([]);
 
   const getDataRuasAPI = () => {
@@ -19,22 +25,19 @@ const Home = () => {
   useEffect(() => {
     getDataRuasAPI();
   }, []);
+
   return (
     <div className="w-full flex flex-col">
       <div className="w-full flex flex-row">
         <div style={{ width: "10%" }}>
           <SideMenu />
         </div>
-        <div style={{ width: "90%" }} className="p-4">
-          <p className="font-bold text-lg">Chart</p>
-          <HomeChart dataRuas={dataRuas} />
-          <p className="font-bold text-xl">Image Gallery</p>
-          <HomeImage dataRuas={dataRuas} />
-          <HomeList dataRuas={dataRuas} />
+        <div className="p-4" style={{ width: "90%" }}>
+          <ListMasterRuas dataRuas={dataRuas} getDataRuasAPI={getDataRuasAPI} />
         </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default MasterRuas;
